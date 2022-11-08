@@ -1,0 +1,140 @@
+%\documentclass[a4paper, titlepage]{livret}                                         
+\documentclass{article}                                                    
+                                                                               
+\usepackage[latin1]{inputenc} % accents                                                                     
+\usepackage[T1]{fontenc}      % caractÃ¨res franÃ§ais                                                
+\usepackage{geometry}         % marges                                                                   
+%\usepackage[francais]{babel}  % langue                                                                        
+\usepackage{graphicx}         % images                                                                  
+\usepackage{verbatim}         % texte prÃ©formatÃ©                                                             
+                                                                                                          
+\title{Cours de C}      % renseigne le titre                                                    
+\author{Thomas Tuilier}           %   "   "   l'auteur                                          
+\date{26 octobre 2022}           %   "   "   la future date de parution
+
+\pagestyle{headings}         % affiche un rappel discret (en haut Ã  gauche)        
+                              % de la partie dans laquel on se situe              
+
+
+
+
+
+\begin{document}
+
+\maketitle                                                                          
+\newpage
+
+
+
+%\tableofcontents
+
+%\chapter{Introduction}                     
+\part{Introduction}
+
+\section{PrÃ©sentation de l'entreprise}
+
+\subsection{Description gÃ©nÃ©rale}
+\subsubsection{ActivitÃ©s de l'entreprise}        
+\paragraph{}                          
+Ses domaines d'activitÃ©s.          
+\paragraph{}                      
+Son pÃ´le de recherche.          
+\paragraph{}                     
+Ses compÃ©tences, son marchÃ©.
+
+\subsubsection{Les partenaires}     
+\paragraph{}                         
+Tissu local, sous-traitant.         
+\paragraph{}                      
+Relations au plan local, nationnal...
+
+\subsection{Situation gÃ©ographique}     
+\paragraph{}       
+Son emplacement.
+
+\newpage
+
+\section{Environnement de travail}
+
+%\chapter{Etude}        
+\part{Etude}
+
+\appendix
+
+                                   
+%\chapter{Annexe A}                                        
+\part{Annexe A}
+
+%\begin{figure}[h]                                     
+%  \centering                                           
+%  \includegraphics[scale=0.75]{images_eps/image1.jpg}                        
+%  \caption{Légende de l'image}                                     
+%\end{figure}
+
+%\includegraphics{image1.jpg}                        
+%\includegraphics[scale=0.25]{image1.jpg} %l'image est réduite de moitié                      
+%\includegraphics[width=5cm]{image1.jpg} %l'image est retaillée pour avoir une largeur de 10cm    
+%\includegraphics[height=5cm]{image1.jpg} %l'image est retaillée pour avoir une hauteur de 10cm    
+%\includegraphics[angle=90]{image1.jpg} %l'image est tournée de 90°
+
+%\chapter{Annexe B}                                    
+\part{Annexe B}
+
+\begin{itemize}                                            
+  \item Elément 1                                           
+  \item Elément 2                                           
+  \begin{itemize}                                      
+    \item[*] Sous-élément 1                              
+    \item[*] Sous-élément 2                                     
+  \end{itemize}                                     
+\end{itemize}
+
+
+\part{Annexe C}
+
+\begin{enumerate}                                           
+  \item Elément 1                                         
+  \item Elément 2                                        
+  \begin{enumerate}                                     
+    \item Sous-élément a                               
+    \item Sous-élément b                                  
+  \end{enumerate}                                   
+\end{enumerate}
+
+\begin{tabular}{|r|r||c|l|}                                      
+\hline                                              
+Poids (Kg) & Taille (m) & IMC ($Kg.m^{-2}$) & Catégorie \\                                    
+\hline                                           
+ 50 & 175 & 16,33 & Sous-poids \\                            
+ 70 & 175 & 22,86 & Poids normal \\                          
+ 85 & 175 & 27,76 & Surpoids \\                       
+130 & 175 & 42,45 & Obèse \\                                  
+\hline                                      
+\end{tabular}                                  
+\newpage
+
+\textsc{Texte en majuscule} \\      
+\textit{Texte en italique} \\         
+\textbf{Texte en gras} \\        
+\flushleft{Texte sérré à gauche} \\      
+\flushright{Texte sérré à droite} \\
+
+
+
+
+\begin{scriptsize}       
+\begin{verbatim}           
+#include <stdio.h>     
+          
+int main() {             
+        printf("hello world!\n");   
+        return 0;              
+}                     
+\end{verbatim}               
+\end{scriptsize}
+
+
+% \listoffigures                    
+% \listoftables
+
+\end{document}          
