@@ -1,0 +1,224 @@
+%\documentclass[a4paper, titlepage]{livret}                                         
+\documentclass{article}                                                    
+                                                                               
+\usepackage[latin1]{inputenc} % accents                                                                     
+\usepackage[T1]{fontenc}      % caractÃ¨res français                                                
+\usepackage{geometry}         % marges                                                                   
+%\usepackage[francais]{babel}  % langue                                                                        
+\usepackage{graphicx}         % images                                                                  
+\usepackage{verbatim}         % texte prÃ©formatÃ©                                                             
+                                                                                                          
+\title{Les bases de l'informatique}      % renseigne le titre                                                    
+\author{Thomas Tuilier}           %   "   "   l'auteur                                          
+\date{26 octobre 2022}           %   "   "   la future date de parution
+
+\pagestyle{headings}         % affiche un rappel discret (en haut Ã  gauche)        
+                              % de la partie dans laquel on se situe              
+
+
+
+
+
+\begin{document}
+
+\maketitle                                                                          
+\newpage
+
+
+{\huge Sommaire} \\
+
+\begin{enumerate}
+  
+\item Introduction 
+  \begin{enumerate}                                     
+    \item Pr\'esentation du livre                                
+  \end{enumerate}
+  
+\item Présentation du Shell                                        
+  \begin{enumerate}                                     
+    \item Fonctionnement                               
+    \item Commandes de base 
+  \end{enumerate}
+
+\item Bash                                         
+  \begin{enumerate}                                     
+    \item Fonctionnement                               
+    \item Commandes de base                                  
+  \end{enumerate}
+
+\item Latex                                        
+  \begin{enumerate}                                     
+    \item Fonctionnement                               
+    \item Commandes de base                                  
+  \end{enumerate}
+
+\item Programmation en C                           
+  \begin{enumerate}                                     
+    \item Fonctionnement                               
+    \item Commandes de base                                  
+  \end{enumerate}
+  
+\end{enumerate}
+
+
+
+%\tableofcontents
+
+%\chapter{Introduction}
+
+
+
+
+
+\newpage
+
+\part{Introduction}
+
+\section{Pr\'esentation du livre}
+\subsection{Description g\'en\'erale}
+
+\paragraph{}                          
+Ce livre est un livre qui a été écrit par moi m\^eme, Thomas Tuilier, durant ma premi\`ere ann\'ee en \'ecole d'ing\'enieur. Mon \'ecole est l'Enseirb-Matmeca situ\'ee à Bordeaux et c'est principalement grace à elle et aux cours de mes fantastiques professeurs que j'ai pu \'ecrire ce livre qui, je l'esp\`ere, vous plaira et surtout vous sera utile pour vous familiariser avec certains aspects d'informatique. Bien sur ce livre ne contient qu'une infime partie de ce qui est possible à faire en informatique. Si vous voulez faire de l'informatique votre m\'etier il faudra bien sur progresser et apprendre par vous m\^eme. Il n'existe malheureusement pas de formule magique pour cela. Cependant, je peut vous garentir d'une chose. Le dommaine de l'informatique ne sera plus aussi obscure après la lecture de ce livre car celui ci abordera toutes les bases à avoir pour s'en sortir en informatique.
+
+\paragraph{}  
+Ce livre est principalement destin\'e au \'etudiant allant en informatique, mais il est bien sur adapt\'es à toutes les personnes voulant ce lancer dans le dommaine vaste qu'est l'informatique. C'est un livre \`a but p\'edagogique qui vous enseignera les bases de l'informatiques. 
+
+\paragraph{}  
+Je vous conseil durant la lecture de ce livre d'utiliser un terminal fonctionnant sur Latex pour pouvoir tester en parall\`ele les commandes. Cela vous permettra de suivre plus facilement et de mieux retenir ce qu'il y a d'\'ecrit dans ce livre. En effet, comprendre est d\'ej\`a assez complexe alors retenir ce qui est dit est d'autant plus compliqu\'e. Ce qui faut se rappeler c'est qu'il ne faut pas essayer de tout retenir directement en lisant ce livre pour la premi\`ere fois. C'est tout simplement impossible pour le commun des mortelles et cela est presque contre productif. En effet certains passages de ce livre serviront de r\'esumm\'e des commandes. Cela vous permettra en cas d'oublie de trouver la commande que vous cherchez. C'est principalement en pratiquant que la plupart des commandes deviendrons pour vous plus naturelles. Ce livre va vous permettre de vous introduire toutes les commandes les plus utiles. Nous aurons donc l'occasion de les utiliser mainte et mainte fois. A force, vous vous en rappellerez sans faire plus d'effort que cela.
+
+\paragraph{}  
+L'apprentissage de l'informatique n'est pas une course, c'est un marathon. Ce n'est pas pour rien que l'on dit qu'on apprend un langage en informatique. L'informatique est comme une langue, et c'est même pire que cela... Car l'informatique n'est pas qu'une langue. L'informatique c'est un dommaine qui regroupe \'enormemment de choses dont de tr\`es nombreux languages comme le Python, le C, le Java... L'objectifs de ce livre n'est pas d'apprendre toutes ces langues par coeur, mais de savoir se d\'erbrouiller et, au fur et à mesure, les programmes deviendrons plus naturels et plus efficaces. Comme un \'etudiant allant pour la premi\`ere fois dans un pays \'etrang\'e, au d\'ebut cela sera compliqu\'e de faire des phrases (programmes), les gens (principalement ici le compilateur) ne vous comprendrons pas. Mais cela est tout \`a fait normal. C'est en pratiquant que vous progresserez et que vous finirez par faire tout ce que vous voulez sans \^etre limit\'e par la bari\`ere de la langue. 
+
+\newpage
+
+\subsection{Objectifs du livre}
+\paragraph{}                      
+Comme je l'ai dit pr\'ecedement, l'objectif de ce livre est de vous introduire les aspects les plus important en informatiques. Dans ce livre nous verons diff\'erentes choses comme le fonctionnement du Shell, du principe des programmes Bash, des commandes les plus utiles pour Latex et pour finir, comment programmer en C. Cela regroupe d\'ej\`a pas mal de choses qui nous occupera pendant de longues heures. Mais ne vous inqui\'etez pas, cela vas tr\`es bien ce passer.
+
+\paragraph{}
+Les chapitres, m\^eme s'ils parlent de choses assez diff\'erentes, seront \`a chaque fois structur\'es de la m\^eme mani\`ere. Il sera donc plus simple pour vous de vous retrouver dans le chapitre. 
+
+
+\paragraph{}
+Il y aura en premier une pr\'esentation assez g\'en\'erale du th\`eme. Durant cette pr\'esentation nous aborderons le fonctionnement du th\`eme. Ensuite il y aura une suite de pr\'esentation de commandes, qui sont bien sur choisi dans un ordre bien choisi. Du plus utile au moins important, et du plus facile au plus compliqu\'e. Cet ordre est tout simplement n\'ecessaire car certaine commande compliqu\'es n\'ecessite d'autres commandes pour pouvoir \^etre utilis\'e de la bonne mani\`ere. Au fur et \`a mesure vous allez donc apprendre de plus en plus de commande qui vous permettra de r\'ealiser des programmes de plus en plus compl\`exes. Pour finir il y aura une sorte de formulaire dans lequel toutes les commandes vues (et plus encores) seront rassembl\'es. Ceci servira donc pour retrouver tr\`es facilement les commandes que vous oublierez car, rassurez vous comme tout le monde, vous en oublierez un certain nombre. 
+
+\paragraph{}
+Comme je l'ai d\'ej\`a dit ne vous inqui\'etez pas, tout va bien se passer. Si j'ai appris \`a m'en sortir en informatique vous allez bien finir par vous vous en sortir aussi. De plus j'ai \'ecrit ce livre pour vous permettre d'\'eviter de faire toutes les erreurs que j'ai d\'ej\`a faite dans le pass\'e. Alors m\^eme si cela peut paraitre compliqu\'e des fois, il faut s'accrocher et ne rien lacher. Car, s'il y a bien une chose que j'\'ai retenue de ma pr\'epa, c'est que tout est apprenable. M\^eme si on est perdu \`a certain moment, on fini toujours par s'en sortir. 
+
+
+\paragraph{}                     
+Bon courage à toi et très bonne lecture. :)
+
+\section{Remerciements}
+
+\paragraph{}                     
+Avant de commencer je tiens à remercier mes professeurs de m'avoir appris tant de chose. Je remercie aussi mes amis de m'avoir expliqu\'e les nombreuses choses que je ne comprennait pas. Je tiens à remercier ma famille de m'avoir toujours soutenue dans ce que je faisais. Et, pour finir, je tiens \`a remercier mon \'ecole, Enseirb Matmeca, car sans elle je n'aurait jamais vecu tant de choses aussi passionnantes.
+
+\newpage
+
+
+
+%\chapter{Etude}        
+\part{Pr\'esentation du Shell}
+
+\section{Fonctionnement}
+\subsection{Introduction}
+
+\paragraph{}                          
+Quand on parle du Shell, on parle de ce qu'on peut appeler un terminal. C'est un programme qui permet d'interargir avec le syst\`eme d'exploitation. Les commandes Shell sont donc les commandes qui agissent quand on les tapes dans un terminal.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\appendix
+
+                                   
+%\chapter{Annexe A}                                        
+\part{Annexe A}
+
+%\begin{figure}[h]                                     
+%  \centering                                           
+%  \includegraphics[scale=0.75]{images_eps/image1.jpg}                        
+%  \caption{Légende de l'image}                                     
+%\end{figure}
+
+%\includegraphics{image1.jpg}                        
+%\includegraphics[scale=0.25]{image1.jpg} %l'image est réduite de moitié                      
+%\includegraphics[width=5cm]{image1.jpg} %l'image est retaillée pour avoir une largeur de 10cm    
+%\includegraphics[height=5cm]{image1.jpg} %l'image est retaillée pour avoir une hauteur de 10cm    
+%\includegraphics[angle=90]{image1.jpg} %l'image est tournée de 90°
+
+%\chapter{Annexe B}                                    
+\part{Annexe B}
+
+\begin{itemize}                                            
+  \item Elément 1                                           
+  \item Elément 2                                           
+  \begin{itemize}                                      
+    \item[*] Sous-élément 1                              
+    \item[*] Sous-élément 2                                     
+  \end{itemize}                                     
+\end{itemize}
+
+
+\part{Annexe C}
+
+\begin{enumerate}                                           
+  \item Elément 1                                         
+  \item Elément 2                                        
+  \begin{enumerate}                                     
+    \item Sous-élément a                               
+    \item Sous-élément b                                  
+  \end{enumerate}                                   
+\end{enumerate}
+
+\begin{tabular}{|r|r||c|l|}                                      
+\hline                                              
+Poids (Kg) & Taille (m) & IMC ($Kg.m^{-2}$) & Catégorie \\                                    
+\hline                                           
+ 50 & 175 & 16,33 & Sous-poids \\                            
+ 70 & 175 & 22,86 & Poids normal \\                          
+ 85 & 175 & 27,76 & Surpoids \\                       
+130 & 175 & 42,45 & Obèse \\                                  
+\hline                                      
+\end{tabular}                                  
+\newpage
+
+\textsc{Texte en majuscule} \\      
+\textit{Texte en italique} \\         
+\textbf{Texte en gras} \\        
+\flushleft{Texte sérré à gauche} \\      
+\flushright{Texte sérré à droite} \\
+
+
+\section{Environnement de travail}
+
+
+\begin{scriptsize}       
+\begin{verbatim}           
+#include <stdio.h>     
+          
+int main() {             
+        printf("hello world!\n");   
+        return 0;              
+}                     
+\end{verbatim}               
+\end{scriptsize}
+
+
+% \listoffigures                    
+% \listoftables
+
+\end{document}          
