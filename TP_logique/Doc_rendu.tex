@@ -1,0 +1,158 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{%
+  %language=Smt2,
+  basicstyle   = \ttfamily,
+  keywordstyle =    \color{magenta},
+  keywordstyle = [2]\color{orange},
+  commentstyle =    \color{gray}\itshape,
+  stringstyle  =    \color{cyan},
+  numbers      = left,
+  frame        = single,
+  framesep     = 2pt,
+  aboveskip    = 1ex
+}
+
+% Figures
+\usepackage{graphicx}
+\graphicspath{{./images/}}
+
+%% Math
+\usepackage{amsmath, amssymb}
+\newtheorem{defi}{Définition}
+
+% Extra  
+\usepackage[left=3cm,right=3cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\title{Devoir maison: Gestionnaire de packages et logique propositionnelle
+  \author{\begin{tabular}{p{13.7cm}}
+      Bardagot Lucas\\
+      Tuilier Thomas
+    \end{tabular}\\
+    \hline}
+}
+
+\maketitle
+
+\section*{Exercice 1}
+Le but est de représenter les conflits et les dépendances entre les différents packages (schématisés dans la figure
+ci dessus). Pour réaliser cela il faut dans un premier temps déclarer tous nos packages (chaque package représente
+une variable booléenne).
+\begin{lstlisting}
+  (declare-const a Bool)
+  (declare-const b Bool)
+  (declare-const c Bool)
+  (declare-const d Bool)
+  (declare-const e Bool)
+  (declare-const f Bool)
+  (declare-const g Bool)
+  (declare-const h Bool)
+  (declare-const i Bool)
+  (declare-const j Bool)
+\end{lstlisting}
+
+Pour simplifier l'écriture, nous allons utiliser des fonctions. Chaque fonction repésente un package ainsi que ses
+dépendances et conflits. \\On a :\\\par A qui est associée au package a
+\par B qui est associée au package b
+\par C qui est associée au package c
+\par ...
+
+\\Dans notre fichier smt on peut écrire ces différentes fonctions de la manière suivante :
+
+\begin{lstlisting}
+  (define-fun A() Bool
+  (and (or (not a) b) (or (not a) c d) (or (not a) d e) (or
+  (not a) d f))
+  )
+
+  (define-fun C() Bool
+  (and (or (not c) g h i) (or (not c) (not e)))
+  )
+
+  (define-fun D() Bool
+  (or (not d) h i)
+  )
+
+  (define-fun E() Bool
+  (and (or (not e) j) (or (not e) (not c)) (or (not e) (not
+  i)))
+  )
+
+  (define-fun F() Bool
+  (or (not f) j)
+  )
+
+  (define-fun G() Bool
+  (or (not g) (not h)
+  )
+
+\end{lstlisting}
+
+On remarque que les packages h, i et j n'ont pas de fonction associée. i et j n'ayant aucune dépendance ou
+contrainte , il n'est pas nécéssaire de créer des fonctions. La variable h a un conflit avec le package g,
+cependant comme la fonction g représente déjà ce conflit, il n'est pas nécessaire de redéfinir ce conflit
+une deuxième fois.\\
+\\
+Pour finir, maintenant que toutes les fonctions sont définies, il suffit de dire que l'on souhaite que toutes
+les fonctions soient respectées.\\
+On peut écrire cela de la manière suivante :
+\begin{lstlisting}
+
+  (assert (and A B C D E F G))
+  (check-sat)
+  (get-model)
+
+\end{lstlisting}
+Pour chaque valuation, lors que la valeur booléenne d'un package est 1 (est 'true') alors le package est peut être
+installé, si la valeur est 0 (est 'false') alors le package ne peut pas être installer.\\Si on veut spécifier
+qu'on a déjà des packages actuellement installés, il suffit de modifier la ligne :
+
+\begin{lstlisting}
+  (assert (and A B C D E F G))
+\end{lstlisting}
+
+En effet, cette ligne représente finalement la formule qui représente nos liaisons.Donc, si on veut qu'un package
+p soit pris en compte comme déjà installé, il suffit d'écrire :
+
+\begin{lstlisting}
+  (assert (and A B C D E F G p))
+\end{lstlisting}
+
+Cela marche aussi avec plusieurs packages. Par exemble si on veut présicer que les packages a, b et g sont déjà installés on peut écrire :
+\begin{lstlisting}
+  (assert (and A B C D E F G a b g))
+\end{lstlisting}
+
+\section*{Exercice 2}
+Pour vérifier que le package b ne peut pas être installé si le package h est installé, il suffit d'écrire :
+\begin{lstlisting}
+  (declare-const b Bool)
+  (declare-const h Bool)
+
+  (define-fun H() Bool
+  (or (and h (not b)) (and b (not h)))
+  )
+
+  (assert H)
+  (check-sat)
+  (get-model)
+
+\end{lstlisting}
+
+De la même maière que l'exercice 1, on a dans un premier temps déclaré nos variables, puis défini la fonction H et
+les commandes. La fonction H repésente la problèmatique de la question 2. En effet, la fonction nous dit que l'on
+a deux possibilités:\\
+\par Soit h est installé et dans ce cas on ne peut pas avoir b
+\par Soit b est installé et dans ce cas on ne peut pas avoir h
+
+\section*{Exercice 3}
+\section*{Exercice 4}
+\section*{Exercice 5}
+\section*{Exercice 6}
+\section*{Exercice 7}
+\end{document}  
